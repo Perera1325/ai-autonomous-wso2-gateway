@@ -1,0 +1,7 @@
+Error Rate %
+
+(
+  sum(rate(http_request_duration_seconds_count{status_code="500"}[1m]))
+  /
+  clamp_min(sum(rate(http_request_duration_seconds_count[1m])), 1)
+) * 100
