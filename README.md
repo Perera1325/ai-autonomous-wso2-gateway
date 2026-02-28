@@ -150,23 +150,23 @@ article-assets      → Screenshots for article
 
 
 
-✔ Backend metrics exposed  
+✔ Backend metrics exposed
 
-✔ Prometheus scraping configured  
+✔ Prometheus scraping configured
 
-✔ 500 error simulation  
+✔ 500 error simulation
 
-✔ Error rate calculation using PromQL  
+✔ Error rate calculation using PromQL
 
-✔ Grafana dashboard visualization  
+✔ Grafana dashboard visualization
 
-✔ Production-grade alert rule  
+✔ Production-grade alert rule
 
-✔ Evaluation group (30s interval)  
+✔ Evaluation group (30s interval)
 
-✔ Threshold > 20%  
+✔ Threshold > 20%
 
-✔ Sustained duration 1 minute  
+✔ Sustained duration 1 minute
 
 
 
@@ -176,15 +176,53 @@ article-assets      → Screenshots for article
 
 (
 
-&nbsp; sum(rate(http\_request\_duration\_seconds\_count{status\_code="500"}\[1m]))
+  sum(rate(http\_request\_duration\_seconds\_count{status\_code="500"}\[1m]))
 
-&nbsp; /
+  /
 
-&nbsp; clamp\_min(sum(rate(http\_request\_duration\_seconds\_count\[1m])), 1)
+  clamp\_min(sum(rate(http\_request\_duration\_seconds\_count\[1m])), 1)
 
 ) \* 100
 
 
 
 This creates a self-monitoring API gateway capable of detecting backend instability.
+
+
+
+
+
+
+
+\## 🚀 Day 06 – Self-Healing API Gateway
+
+
+
+\### Implemented
+
+
+
+✔ Backup backend service  
+
+✔ Automatic failover after 3 errors  
+
+✔ Circuit breaker style logic  
+
+✔ Auto recovery check every 30 seconds  
+
+✔ Fault tolerant routing  
+
+
+
+\### Behavior
+
+
+
+If primary backend fails:
+
+Gateway automatically routes traffic to backup service.
+
+
+
+This transforms the project into a resilient distributed system.
 
